@@ -3,7 +3,7 @@ const { listenerCount } = require("process");
 const app = express(); // recebe a funçao do express
 
 app.get('/', function(req, res){  // cria uma rota para a aplicação
-    res.send("Seja bem-vindo ao meu app")  
+    res.send("Seja bem-vindo ao meu App")  
 })
 
 app.get('/sobre', function(req,res){
