@@ -3,13 +3,16 @@ const { listenerCount } = require("process");
 const app = express(); // recebe a funçao do express
 
 app.get('/', function(req, res){  // cria uma rota para a aplicação
-    res.send("Seja bem-vindo ao meu App")  
+    res.sendFile(__dirname + "/html/index.html")
 })
 
 app.get('/sobre', function(req,res){
-    res.send("Minha pagina sobre")
+    res.sendFile(__dirname + "/html/sobre.html")
 })
 
+app.get('/tabela', function(req,res){
+    res.sendFile(__dirname+"/html/tabela.html")
+})
 app.get('/blog', function(req,res){
     res.send("Bem-vindo ao meu blog")
 })
