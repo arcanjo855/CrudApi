@@ -1,22 +1,11 @@
 const express = require('express');
 const app = express();
+const handlebars = require('express-handlebars')
 
-
-app.get("/", function(req,res){
-    res.send("seja bem-vindo a minha página sobre")
-})
-
-app.get("/sobre", function(req,res){
-    res.send("minha pagina sobre")
-})
-
-app.get("/blog", function(req,res){
-    res.send("meu blog")
-})
-
-app.get("/live",function(req,res){
-    res.send("Live teste")
-})
+// config   
+    // template engine
+        app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+        app.set('view engine', 'handlebars')
 
 
 
