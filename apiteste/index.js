@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
-const Sequelize  = require('sequelize');
 const bodyParser = require('body-parser')
 
 
@@ -17,12 +16,7 @@ const bodyParser = require('body-parser')
         app.use(bodyParser.urlencoded({extended: false}))
         app.use(bodyParser.json())    
 
-    // conexão com o banco de dados Mysql 
 
-    const sequelize = new Sequelize('teste', 'root', 'Rafael@123', {
-        host: "localhost",
-        dialect: 'mysql'
-    })
 
 
 // Rotas 
