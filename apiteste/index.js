@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser')
-
+const Post = require('./models/Post')
 
 
 
@@ -21,18 +21,31 @@ const bodyParser = require('body-parser')
 
 // Rotas 
  // rotas do tipo get podem ser acessadas por url
+    app.get('/', function(req,res){
+        Post.findAll({order:[['id', 'DESC']]}).then(function(posts){
+            res.render('home', {posts: posts})
+        })
+    })
+
     app.get('/cad', function(req,res){
         res.render('formulario')
     })
 
  // rotas do tipo post nao podem ser acessadas por url
     app.post('/add', function(req,res){
-        res.send("Texto: " + req.body.titulo + " Conteudo: " + req.body.conteudo)
+        Post.create({
+            titulo: req.body.titulo,
+            conteudo: req.body.conteudo
+        }).then(function(){
+            res.redirect('/')
+        }).catch(function(erro){
+            res.send("Erro ao criar o post" + erro)
+        })
     })
 
 
 
 app.listen(8081, function(){
-    console.log("O servidor está on")
+    console.log("O servidor está on na url: localhost:8081")
 });
 
