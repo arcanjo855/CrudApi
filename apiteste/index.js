@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
-const { Sequelize } = require('sequelize');
-const sequelize = require('sequelize')
+const Sequelize  = require('sequelize');
+
+
 
 
 
@@ -14,13 +15,22 @@ const sequelize = require('sequelize')
 
     // conexão com o banco de dados Mysql 
 
-    sequelize = new Sequelize('teste', 'root', 'Rafael@123', {
+    const sequelize = new Sequelize('teste', 'root', 'Rafael@123', {
         host: "localhost",
         dialect: 'mysql'
     })
 
 
+// Rotas 
+ // rotas do tipo get podem ser acessadas por url
+    app.get('/cad', function(req,res){
+        res.render('formulario')
+    })
 
+ // rotas do tipo post nao podem ser acessadas por url
+    app.post('/add', function(req,res){
+        res.send("Formulario recebido")
+    })
 
 
 
