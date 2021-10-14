@@ -1,3 +1,8 @@
+// fazer login no mysql pelo prompt de comando = -h localhost -u root -p
+
+
+
+
 create database teste; // cria um banco de dados
 
 show databases; // mostra os bancos de dados
