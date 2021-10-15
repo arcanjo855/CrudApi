@@ -1,3 +1,6 @@
+// instalando dependecias
+
+
 const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
@@ -42,9 +45,16 @@ const Post = require('./models/Post')
             res.send("Erro ao criar o post" + erro)
         })
     })
+ // deletando um post
+    app.get('/deletar/:id', function(req,res){
+        Post.destroy({where: {'id': req.params.id }}).then(function(erro){
+            res.redirect('/')
+        }).catch(function(erro){
+            res.send("Esta postagem nao existe")
+        })
+    })
 
-
-
+ // colocando o servidor online
 app.listen(8081, function(){
     console.log("O servidor está on na url: localhost:8081")
 });
